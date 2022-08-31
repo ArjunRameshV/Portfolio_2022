@@ -23,7 +23,7 @@ jobs:
         uses: actions/npm-install@v1
 
       - name: Build Project
-        uses: npm run build
+        run: npm run build
 
       - name: Upload Production Build Files
         uses: actions/upload-artifact@v2
