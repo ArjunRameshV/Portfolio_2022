@@ -19,8 +19,15 @@ jobs:
         with:
           node-version: 16
 
+      - name: Cache Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: npm-${{ hashFiles('package-lock.json') }}
+          restore-keys: npm-
+        
       - name: Install Dependencies
-        uses: actions/npm-install@v1
+        run: npm ci --ignore-scripts
 
       - name: Build Project
         run: npm run build
